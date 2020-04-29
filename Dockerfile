@@ -22,4 +22,4 @@ RUN apk add --no-cache autoconf automake bash g++ libc6-compat libjpeg-turbo-dev
 
 FROM scratch
 
-COPY --from:build /pgadmin4 /pgadmin4
+COPY --from=build /pgadmin4 /pgadmin4
