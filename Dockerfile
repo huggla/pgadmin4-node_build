@@ -14,7 +14,7 @@ RUN apk add --no-cache autoconf automake bash g++ libc6-compat libjpeg-turbo-dev
  && npm audit fix \
  && rm -f yarn.lock \
  && yarn import \
- && yarn audit \
+# && yarn audit \
  && yarn audit --groups dependencies \
  && rm -f package-lock.json \
  && yarn run bundle \
