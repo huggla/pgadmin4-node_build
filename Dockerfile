@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:alpine as build
 
 ARG PGADMIN_VERSION="4.20"
 
@@ -19,3 +19,7 @@ RUN apk add --no-cache autoconf automake bash g++ libc6-compat libjpeg-turbo-dev
  && rm -f package-lock.json \
  && yarn run bundle \
  && rm -rf node_modules yarn.lock package.json .[^.]* babel.cfg webpack.* karma.conf.js pgadmin/static/js/generated/.cache
+
+FROM scratch
+
+COPY --from:build /pgadmin4 /pgadmin4
